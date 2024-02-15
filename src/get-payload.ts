@@ -18,17 +18,12 @@ if(!cached) {
 interface Args {
     initOptions?: Partial<InitOptions>
 }
-// export const getPayloadClient = async ({
-//     initOptions}
-//     : Args) => {
-//     if(!process.env.NEXT_PUBLIC_PAYLOAD_SECRET) {
-//         throw new Error('PAYLOAD_SECRET is missing')
-//     }
+
 export const getPayloadClient = async ({
     initOptions,
   }: Args = {}): Promise<Payload> => {
     if (!process.env.NEXT_PUBLIC_PAYLOAD_SECRET) {
-      throw new Error('PAYLOAD_SECRET is missing')
+      throw new Error('NEXT_PUBLIC_PAYLOAD_SECRET is missing')
     }
     if(cached.client) {
         return cached.client
